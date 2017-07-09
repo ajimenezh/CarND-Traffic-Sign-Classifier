@@ -1,12 +1,4 @@
-#**Traffic Sign Recognition** 
-
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Build a Traffic Sign Recognition Project**
+# **Traffic Sign Recognition** 
 
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
@@ -40,15 +32,11 @@ The goals / steps of this project are the following:
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+### Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
+### Data Set Summary & Exploration
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
-
-###Data Set Summary & Exploration
-
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
 We can calculate some statistics of the traffic signs data set:
 
@@ -58,7 +46,7 @@ We can calculate some statistics of the traffic signs data set:
 * The shape of a traffic sign image is [32, 32]
 * The number of unique classes/labels in the data set is 43
 
-####2. Include an exploratory visualization of the dataset.
+#### 2. Include an exploratory visualization of the dataset.
 
 I have implemented a function showSignOfType to plot an example of a sign of type i, for example, :
 
@@ -72,9 +60,9 @@ It is also important to see how data is distributed between the different classe
 
 Here we can see that the data is not uniform, and there are some classes that are more represented than others, for example, there are much more "Keep right" signs than "Keep left".
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
 As a first step, I decided to convert the images to grayscale because, although the color may be significant to the meaning of the traffic sign, actually it doesn't help that much to differentiate between signs, and we obtain better results with grayscale.
 
@@ -99,7 +87,7 @@ Here is an example of an original image and an augmented image:
 We create 5 new images from each images in the data set. There are other possible transformations that can be done, as shifts, adding noise, deleting data from the images, ..., but just with the rotaions I've obtained good enough results (around 96% accuracy), however, using more tranformations we probably could improve the results further.
 
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
 
@@ -121,11 +109,11 @@ My final model consisted of the following layers:
  
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 To train the model, I used Adam's algorithm as the optimizer, a rate of 0.0005, batch size of 128, and I trained the model for 210 epochs.
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 1.000
@@ -138,9 +126,9 @@ From here I used a iterative approach to obtain results of more than 0.93 accura
 Finally, I augmented the data with rotations and Gauss noise. At first the results were worse because the rotations were big, and its better to only apply perturbations to the images. In the end I only applied rotations between -15 and 15 degrees, and the validation accuraty went to around 0.96.
  
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
@@ -149,7 +137,7 @@ Here are five German traffic signs that I found on the web:
 
 The first image might be difficult to classify because ...
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
@@ -164,7 +152,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. The results does not seems very good, although because there are only 5 images, we can't draw any definitive conclusion. Also, it may be that the chosen images are very different from the ones trained.
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The model is certain in all the images with a probability of 1.0. With these results and the test accuracy, it seems that the model may have overfit a little.
 
@@ -178,7 +166,7 @@ The model is certain in all the images with a probability of 1.0. With these res
  
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
 We can see that in the first convolutional layer, the features map cover most of the image, while in the second convolutional layer there are more feature maps, and are focused in smaller parts of the images.
 
